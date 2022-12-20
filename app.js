@@ -11,7 +11,7 @@ const app = new App({
 console.log(process.env.SLACK_BOT_TOKEN);
 console.log(process.env.SLACK_SIGNING_SECRET);
 
-app.command("room", 
+app.command("/room", 
 await say({
     text: `HiHi`
   }));
