@@ -1,6 +1,6 @@
 const express = require('express')
 const { App, ExpressReceiver } = require('@slack/bolt');
-
+const app2 = express();
 const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET });
 
 receiver.router.use(express.static('public'))
@@ -68,6 +68,6 @@ app.action('button_click', async ({ body, ack, say }) => {
   console.log('⚡️ Bolt app is running!');
 })();
 
-app.get('/ido', function(req, res) {
+app2.get('/ido', function(req, res) {
   res.send('Hello World!');
 });
