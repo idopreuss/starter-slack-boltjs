@@ -67,3 +67,7 @@ app.action('button_click', async ({ body, ack, say }) => {
 
   console.log('⚡️ Bolt app is running!');
 })();
+
+app.get('/ido', function(req, res) {
+  res.send('Hello World!');
+});
