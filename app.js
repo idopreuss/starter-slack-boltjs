@@ -1,15 +1,26 @@
-const express = require('express');
-const app = express();
+const SlackBot = require('slackbots');
 
-app.post('/room', function(req, res) {
-  console.log(req.body);
-  res.send('Will be coming soon!!!');
+const bot = new SlackBot({
+token: 'YOUR_SLACK_BOT_TOKEN',
+name: 'My Bot'
 });
 
-app.get('/ido', function(req, res) {
-  res.send('Hello World!');
-});
-app.listen(process.env.PORT || 3000, function() {
-  console.log('Web service listening on port 3000');
+// Start the bot
+bot.on('start', () => {
+console.log('Bot has started');
 });
 
+// Message handler
+bot.on('message', data => {
+// Check if the message is from a bot
+if (data.subtype && data.subtype === 'bot_message') return;
+
+// Get the user who sent the message
+const user = data.user;
+
+// Get the message text
+const message = data.text;
+
+// Do something with the message here
+console.log( "Received message from ${user}: ${message}");
+});
