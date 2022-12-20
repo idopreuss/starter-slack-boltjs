@@ -11,10 +11,13 @@ const app = new App({
 console.log(process.env.SLACK_BOT_TOKEN);
 console.log(process.env.SLACK_SIGNING_SECRET);
 
+slackBody = {
+    "text": "Test"
+}
+
 app.command("/room", 
-await say({
-    text: `HiHi`
-  }));
+res.send(slackBody)
+);
 
 app.message(':wave:', async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
