@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 app.post('/room', function(req, res) {
+  console.log(req.body);
   res.send('Will be coming soon!!!');
 });
 
