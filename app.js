@@ -15,7 +15,7 @@ slackBody = {
     "text": "Test"
 }
 
-app.command("/room", 
+app.command("room", 
 res.send(slackBody)
 );
 
