@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
 
-app.get('/ido', function(req, res) {
-  res.send('Hello Wo rld!');
+app.post('/room', function(req, res) {
+  res.send('Will be coming soon!!!');
 });
 
+app.get('/ido', function(req, res) {
+  res.send('Hello World!');
+});
 app.listen(process.env.PORT || 3000, function() {
-  console.log('Web service listening on port 8080');
+  console.log('Web service listening on port 3000');
 });
 
