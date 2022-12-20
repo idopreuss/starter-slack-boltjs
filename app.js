@@ -11,6 +11,11 @@ const app = new App({
 console.log(process.env.SLACK_BOT_TOKEN);
 console.log(process.env.SLACK_SIGNING_SECRET);
 
+app.command("room", 
+await say({
+    text: `HiHi`
+  }));
+
 app.message(':wave:', async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
   await say({
