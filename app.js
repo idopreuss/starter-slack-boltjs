@@ -18,13 +18,12 @@ slackBody = {
 }
 
 // The echo command simply echoes on command
-app.command('/room', async ({ command, ack, respond, say }) => {
+app.command('/room', async ({ command, ack, respond }) => {
   // Acknowledge command request
   await ack();
 
-  await say({
-    text: `Directions to ${command.text} will be coming soon. Stay tuned!`,
-  });
+  await respond(`Directions to ${command.text} will be coming soon. Stay tuned!`);
+  
 });
 
 (async () => {
