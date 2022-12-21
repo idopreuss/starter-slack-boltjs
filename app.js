@@ -3,7 +3,7 @@ const express = require('express')
 const { App, ExpressReceiver } = require('@slack/bolt');
 const { createEventAdapter } = require('@slack/events-api');
 
-const slackEvents = createEventAdapter(slackSigningSecret);
+const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET);
 
 const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET });
 receiver.router.use(express.static('public'))
