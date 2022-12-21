@@ -1,6 +1,10 @@
 
 const express = require('express')
 const { App, ExpressReceiver } = require('@slack/bolt');
+const { createEventAdapter } = require('@slack/events-api');
+
+const slackEvents = createEventAdapter(slackSigningSecret);
+
 const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET });
 receiver.router.use(express.static('public'))
 const app = new App({
@@ -15,6 +19,13 @@ slackBody = {
     "text": "Test"
 }
 
+slackEvents.on('message', (event, body, headers) => {
+  console.log(`Received a message event: user ${event.user} in channel ${event.channel} says ${event.text}`);
+  console.log(`The event ID is ${body.event_id} and time is ${body.event_time}`);
+  if (headers['X-Slack-Retry-Num'] !== undefined) {
+    console.log(`The delivery of this event was retried ${headers['X-Slack-Retry-Num']} times because ${headers['X-Slack-Retry-Reason']}`);
+  }
+});
 
 app.message('room', async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
