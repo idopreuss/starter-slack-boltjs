@@ -18,43 +18,17 @@ slackBody = {
 }
 
 // The echo command simply echoes on command
-app.command('/room', async ({ command, ack, respond }) => {
+app.command('/room', async ({ command, ack, respond, say }) => {
   // Acknowledge command request
   await ack();
 
   await respond(`Directions to ${command.text} will be coming soon. Stay tuned!`);
-});
-
-app.message('room', async ({ message, say }) => {
-  // say() sends a message to the channel where the event was triggered
-    await ack();
-    await say({
-    text: `Hey there <@${message.user}>!`,
-    text: `Hey there there <@${message.user}>!`,
+  await say({
+    text: `Directions to ${command.text} will be coming soon. Stay tuned!`,
     thread_ts: message.ts
   });
 });
-app.event('app_mention', async ({ event, say }) => {
-  await say({
-    text: `Hello <@${event.user}>: If you send me a :wave: I'll send you a button to click. If you add a reaction to a message I'll say thanks.`,
-    thread_ts: event.ts
-  })
-});
-app.event('reaction_added', async ({ event, say }) => {
-  await say({
-    text: `Thanks for the :${event.reaction}:`,
-    thread_ts: event.item.ts
-  })
-});
-app.action('button_click', async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
-  // console.log(JSON.stringify(body,null,2))
-  await say({
-    text: `<@${body.user.id}> you clicked the button. Well done.`,
-    thread_ts: body.message.ts
-  });
-});
+
 (async () => {
   // Start the app
   await app.start(process.env.PORT || 3000);
