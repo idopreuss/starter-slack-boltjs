@@ -24,7 +24,6 @@ app.command('/room', async ({ command, ack, respond, say }) => {
 
   await say({
     text: `Directions to ${command.text} will be coming soon. Stay tuned!`,
-    thread_ts: message.ts
   });
 });
 
