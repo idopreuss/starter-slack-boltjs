@@ -16,26 +16,9 @@ slackBody = {
 }
 
 
-app.message(':wave:', async ({ message, say }) => {
+app.message('room', async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
   await say({
-    blocks: [
-      {
-        "type": "section",
-        "text": {
-          "type": "mrkdwn",
-          "text": `Hey there <@${message.user}>!`
-        },
-        "accessory": {
-          "type": "button",
-          "text": {
-            "type": "plain_text",
-            "text": "Click Me"
-          },
-          "action_id": "button_click"
-        }
-      }
-    ],
     text: `Hey there <@${message.user}>!`,
     text: `Hey there there <@${message.user}>!`,
     thread_ts: message.ts
