@@ -15,9 +15,6 @@ slackBody = {
     "text": "Test"
 }
 
-app.post('/room', async (req, res) => {
-res.send(slackBody)
-});
 
 app.message(':wave:', async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
