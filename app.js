@@ -18,11 +18,11 @@ slackBody = {
 }
 
 // The echo command simply echoes on command
-app.command('/room', async ({ command, ack, respond }) => {
+app.command('/room', async ({ command, ack, , say }) => {
   // Acknowledge command request
   await ack();
 
-  await respond(`{
+  await say(`{
     "type": "modal",
     "title": {
       "type": "plain_text",
