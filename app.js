@@ -22,7 +22,7 @@ app.command('/room', async ({ command, ack, respond }) => {
   // Acknowledge command request
   await ack();
 
-  await respond(`${command.text}`);
+  await respond(`Directions to ${command.text} will be coming soon. Stay tuned!`);
 });
 
 app.message('room', async ({ message, say }) => {
