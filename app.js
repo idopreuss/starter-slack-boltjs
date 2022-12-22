@@ -3,8 +3,9 @@ const { App } = require('@slack/bolt');
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
-  appToken: process.env.SLACK_APP_TOKEN,
-  socketMode: true,
+  signingSecret: process.env.SLACK_SIGNING_SECRET,
+  socketMode:true, // enable the following to use socket mode
+  appToken: process.env.APP_TOKEN
 });
 
 
@@ -18,7 +19,13 @@ slackBody = {
 
 // The echo command simply echoes on command
 app.command('/room', async ({ message, say }) => {
-  await say(`_Who's there?_`);
+  try {
+      await ack();
+      say("Yaaay! that command works!");
+    } catch (error) {
+        console.log("err")
+      console.error(error);
+    }
 });
 
 (async () => {
