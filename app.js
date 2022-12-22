@@ -23,7 +23,7 @@ slackBody = {
 }
 
 // The echo command simply echoes on command
-app.message('room', async ({ message, say }) => {
+app.command('/room', async ({ message, say }) => {
   await say(`_Who's there?_`);
 });
 
