@@ -5,20 +5,12 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   socketMode:true, // enable the following to use socket mode
-  appToken: process.env.APP_TOKEN
+  appToken: process.env.APP_TOKEN,
 });
 
 
-// const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET });
-// receiver.router.use(express.static('public'))
-
-
-slackBody = {
-    "text": "Test"
-}
-
 // The echo command simply echoes on command
-app.command('/room', async ({ message, say }) => {
+app.command('/room', async ({ say }) => {
   try {
       await ack();
       say("Yaaay! that command works!");
