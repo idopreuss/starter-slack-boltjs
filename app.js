@@ -1,6 +1,5 @@
 
-const express = require('express')
-const { App, ExpressReceiver } = require('@slack/bolt');
+const { App, SocketModeReceiver } = require('@slack/bolt');
 
 
 // const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET });
@@ -17,8 +16,7 @@ const app = new App({
   appToken: process.env.SLACK_APP_TOKEN,
   socketMode: true,
 });
-console.log(process.env.SLACK_BOT_TOKEN);
-console.log(process.env.SLACK_SIGNING_SECRET);
+
 
 slackBody = {
     "text": "Test"
