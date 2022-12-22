@@ -22,6 +22,6 @@ app.command('/room', async ({ say }) => {
 
 (async () => {
   // Start the app
-  await app.start(process.env.PORT || 3000);
+  await app.start();
   console.log('⚡️ Bolt app is running!');
 })();
